@@ -1,4 +1,6 @@
-#Front-end Job Interview Questions
+#Front-end Job Interview Questions with my answers
+
+**The answers are mine or found. I don't claim to know them perfectly, just that I researched them.**
 
 This file contains a number of front-end interview questions that can be used when vetting potential candidates. It is by no means recommended to use every single question here on the same candidate (that would take hours). Choosing a few items from this list should help you vet the intended skills you require.
 
@@ -138,32 +140,133 @@ This file contains a number of front-end interview questions that can be used wh
 * Have you ever worked with retina graphics? If so, when and what techniques did you use?
 * Is there any reason you'd want to use `translate()` instead of *absolute positioning*, or vice-versa? And why?
 
+##### My CSS Questions
+* Types of positions and how they affect the flow of the page
+
 #### JS Questions:
 
 * Explain event delegation
+    * _Event delegation is based on event bubbling. Let's say that you have a div with a span inside. You add an event listener on the div and you click the span. The click event happens on the span and then notifies his parent and bubbles up the event. That is event bubbling. In combination with the `target` property of the event, you can use event delegation._
+    * _Event delegation is useful because you can have only one event listener and you can find out if a specific element inside your page was clicked. This is also useful if you add elements dynamically and you can have only one event listener on the parent._
 * Explain how `this` works in JavaScript
+    * _`this` is changed based on how a function is called._
 * Explain how prototypal inheritance works
+    * _When an object rabbit inherits from another object animal, in JavaScript that means that there is a special property rabbit.`__proto__ = animal`._
+
+        ![alt](http://javascript.info/files/tutorial/intro/object/prototype.png)
+    * _When a rabbit property is accessed, and the interpreter can’t find it in rabbit, it follows the `__proto__` link and searches in animal._
+    * _It's not a good practice to modify the ```__proto__``` property because in Opera (I don't know if it still applies) and IE < 9 you don't have access to this property. It's also good to know that the ```__proto__``` property was implemented by Firefox/Chrome without being standardized first. Instead you should use `Object.create`_
+    ```javascript
+        var animal = { eats: true };
+        rabbit = Object.create(animal);
+        alert(rabbit.eats); // true
+    ```
+    * _Another way to the above:_
+    ```javascript
+    var animal = { eats: true }
+    
+    function Rabbit(name) { 
+      this.name = name
+    }
+    
+    Rabbit.prototype = animal 
+    
+    var rabbit = new Rabbit('John')
+    
+    alert( rabbit.eats ) // true, because rabbit.__proto__ == animal
+    ```
+    * _More info [here](http://javascript.info/tutorial/inheritance)_
 * What do you think of AMD vs CommonJS?
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
+    * _If you don't wrap the function with parentheses, the JS parser will treat it as a function declaration, not a function expression. A function expression can be called immediately, but a function declaration cannot._
+    * _Function Expression - `var test = function() {};`_
+    * _Function Declaration - `function test() {};`_
+    * _To be an IIFE you only have to do `(function (){ })();` or `(function (){ }())`_
 * What's the difference between a variable that is: `null`, `undefined` or undeclared?
   * How would you go about checking for any of these states?
+    * _A variable is undeclared if it isn't declared with a `var/let/const`. `console.log(a) => Uncaught ReferenceError: a is not defined`_
+    * _It's undefined if it doesn't have a value attributed to it. `var a;` and if you do `console.log(a) => undefined`_
+    * _A variable is attributed this value to specifically tell that this variable is empty. `var a = null; console.log(a) => null`_
 * What is a closure, and how/why would you use one?
+    * _In short, a closure is a way to keep access to variables in a function after that function has returned._
+    * _Found a very good explanation [here](http://lucybain.com/blog/2014/closures/)._
+    ```javascript
+    function stillAClosure(anotherLongLivedVariable) {
+          var innerFunction = function inner() {
+              return anotherLongLivedVariable;
+          }
+          return innerFunction;
+      }
+      var closure = stillAClosure("The same string");
+      closure(); // returns "The same string"
+      closure(); // returns "The same string"
+      closure(); // returns "The same string"
+      And here’s even more proof:
+      
+      var closure1 = stillAClosure("String 1");
+      closure1(); // returns "String 1"
+      closure1(); // returns "String 1"
+      
+      var closure2 = stillAClosure("String 2");
+      closure2(); // returns "String 2"
+      closure2(); // returns "String 2"
+      
+      // And here's the kicker
+      closure1(); // returns "String 1"  
+    ```
+    * _A closure is good to keep state in an application, to keep private things private (separation of concern)._
 * What's a typical use case for anonymous functions?
 * How do you organize your code? (module pattern, classical inheritance?)
 * What's the difference between host objects and native objects?
 * Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
+    * _The first is a function declaration._
+    * _The second is a declaration of a variable with an invocation of a function `Person` and sets the value to its returned value._
+    * _The third creates a new instance of an object based on the Person function. The variable `person` in now an object with its prototype having the constructor the declared function._
 * What's the difference between `.call` and `.apply`?
+    * _With both you call a function in a scope (you bind a scope to the function). The difference is when you send parameters. With `foo.call(scope, param1, param2)` and with `foo.apply(scope, [param1, param2])`_
 * Explain `Function.prototype.bind`.
+    * _When `bind()` is called, it creates a new function that has its `this` keyword set to the provided value and it can receive also a sequence of arguments._
 * When would you use `document.write()`?
 * What's the difference between feature detection, feature inference, and using the UA string?
+    * _Feature detection checks a feature for existence, e.g.:_
+    ```javascript
+    if (window.XMLHttpRequest) {
+        new XMLHttpRequest();
+    }
+    ```
+    * _Feature inference checks for a feature just like feature detection, but uses another function because it assumes it will also exist, e.g.:_
+    ```javascript
+    if (document.getElementsByTagName) {
+        element = document.getElementById(id);
+    }
+    ```
+    * _Checking the UA string is an old practice and should not be used anymore. You keep changing the UA checks and never benefit from newly implemented features, e.g.:_
+    ```javascript
+    if (navigator.userAgent.indexOf("MSIE 7") > -1){
+        //do something
+    }
+    ```
 * Explain Ajax in as much detail as possible.
 * What are the advantages and disadvantages of using Ajax?
 * Explain how JSONP works (and how it's not really Ajax).
 * Have you ever used JavaScript templating?
   * If so, what libraries have you used?
 * Explain "hoisting".
+    * _If you have:_
+    ```javascript
+    (function() { 
+      alert(myVar); // undefined 
+      var myVar = 'local value'; 
+    })();
+    ```
+    * _it will show undefined because only the `var myvar` is lifted (hoisted) on top, without the initialization._
 * Describe event bubbling.
+    * _Event bubbling_ 
+    * ![alt text](https://javascript.info/files/tutorial/browser/events/event-order-bubbling.gif "Event bubbling")
+    * _Event capturing_
+    * ![alt text](http://www.senocular.com/flash/tutorials/buttoncapturing/images/capture.png "Event capturing")
+    * _In all browsers, except IE<9, there are two stages of event processing. The event first goes down - that’s called capturing, and then bubbles up. This behavior is standartized in W3C specification. You can use capturing if you do this `element.addEventListener(type, handler, phase)` where `phase` can be true or false, where true means that the handler is set to capturing mode._
 * What's the difference between an "attribute" and a "property"?
 * Why is extending built-in JavaScript objects not a good idea?
 * Difference between document load event and document DOMContentLoaded event?
@@ -175,6 +278,11 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 ```
 * Why is it called a Ternary expression, what does the word "Ternary" indicate?
 * What is `"use strict";`? what are the advantages and disadvantages to using it?
+    * _This enables Strict Mode that allows you to place a program or a function in a strict operating context. This prevents certain actions to be taken and throws more exceptions._
+    * _It catches some common coding bloopers, throwing exceptions. (ex. assigning `foo = 'bar';` without first defining `foo` will throw an exception)_
+    * _It prevents, or throws errors, when relatively "unsafe" actions are taken (such as gaining access to the global object)._
+    * _It disables features that are confusing or poorly thought out._
+    * _More about Strict Mode [here](http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/)._
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
 * Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
@@ -192,6 +300,77 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 * What is event loop?
   * What is the difference between call stack and task queue?
 * Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
+
+##### My JS Questions:
+* What is the difference between `target` and `currentTarget` in an event?
+    * `target` is the clicked element and `currentTarget` is the element on which the handler is bound.
+* Why would you use an IIFE?
+    * _You can easily create a scope._
+* What is `eval`?
+    * _It evaluates JS code represented as a string. It returns a string containing the response of the code given or undefined if the response is empty._
+    * _If you use the eval function indirectly, by invoking it via a reference other than eval, as of ECMAScript 5 it works at global scope rather than local scope; this means, for instance, that function declarations create global functions, and that the code being evaluated doesn't have access to local variables within the scope where it's being called._
+    ```javascript
+    function test() {
+      var x = 2, y = 4;
+      console.log(eval("x + y"));  // Direct call, uses local scope, result is 6
+      var geval = eval;
+      console.log(geval("x + y")); // Indirect call, uses global scope, throws ReferenceError because `x` is undefined
+    }
+    ```
+* What are the pitfalls of using `eval`?
+    * _If you run `eval()` with a string that could be affected by a malicious party, you may end up running malicious code._
+    * _It's also slower because it needs to invoke the JS interpreter. (it needs compilation)_
+* What is `__proto__` vs `prototype`?
+* What does the `new` keyword do?
+    * _When the code new Foo(...) is executed, the following things happen:_
+       * _A new object is created, inheriting from Foo.prototype._
+       * _The constructor function Foo is called with the specified arguments, and with this bound to the newly created object. new Foo is equivalent to new Foo(), i.e. if no argument list is specified, Foo is called without arguments._
+       * _The object returned by the constructor function becomes the result of the whole new expression. If the constructor function doesn't explicitly return an object, the object created in step 1 is used instead. (Normally constructors don't return a value, but they can choose to do so if they want to override the normal object creation process.)_
+* Difference between typeof and instanceOf.
+* How do you create a new class using es5? How do you extend using es5?
+    ```javascript
+    //creation of a class a.k.a. a function
+    function Hello(name) {
+      this.name = name;
+    }
+    
+    //adding a method to a prototype - there are two advantages: every other class that extends this one
+    //will have this method and this method will not be recreated for each instance of the Hello class
+    Hello.prototype.hello = function hello() {
+      return 'Hello ' + this.name + '!';
+    };
+    
+    //adding a method only to the Hello class. Every other class that extends this one, will not have this method.
+    Hello.sayHelloAll = function () {
+      return 'Hello everyone!';
+    };
+    
+    //(1) extending the Hello class
+    function HelloWorld() {
+      Hello.call(this, 'World');
+    }
+    
+    //(2) extending the Hello class. Setting the Hello prototype to the HelloWorld prototype. (setting the prototype chain)
+    HelloWorld.prototype = Object.create(Hello.prototype);
+    
+    //While not strictly necessary, it's there to preserve some useful invariants. Since the assignment to HelloWorld.prototype 
+    //kills the existing Hello.prototype.constructor (which was set to HelloWorld when the HelloWorld constructor was created), we restore it.
+    HelloWorld.prototype.constructor = HelloWorld;
+    
+    //(3) using the same method for HelloWorld
+    HelloWorld.sayHelloAll = Hello.sayHelloAll;
+    
+    //Instead of (1), (2) and (3) couldn't you just make the following?????
+    var HelloWorld2 = Object.create(Hello, {name: 'World2'});
+    
+    HelloWorld.prototype.echo = function echo() {
+      alert(Hello.prototype.hello.call(this));
+    };
+    
+    var hw = new HelloWorld();
+    hw.echo();
+    ```
+    * _Detailed explanation [here](http://eli.thegreenplace.net/2013/10/22/classical-inheritance-in-javascript-es5)_
 
 #### Testing Questions:
 

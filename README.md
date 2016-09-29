@@ -56,18 +56,25 @@ This file contains a number of front-end interview questions that can be used wh
 #### HTML Questions:
 
 * What does a `doctype` do?
+    * _It's a way to tell the browser what type of document do you use. If it's omitted, browsers tend to guess and you may end up with some issues. It's also used for validating the document according to the mentioned doctype._
+    * _example `<!DOCTYPE html>`_
 * What's the difference between full standards mode, almost standards mode and quirks mode?
+    * _As far as I know, at first developers wrote two version of a page: one for IE and another for Netscape. After the introduction of web standards they couldn't enforce those standards because they could brake a lot of pages, so the browsers implemented quirks mode (when a browsers emulates the another browsers to support that page), almost standard mode (when browsers emulate only some of the quirks) and full standards (where the page is interpreted as the developer wanted it)._
 * What's the difference between HTML and XHTML?
+    * _In HTML things are way more permissive over the correctness of the writing. Start tags don't necessarily have to end, attributes don't have to have quotes, only <br/>, <img/> and <link/> are permitted as self enclosed._
 * Are there any problems with serving pages as `application/xhtml+xml`?
 * How do you serve a page with content in multiple languages?
 * What kind of things must you be wary of when design or developing for multilingual sites?
 * What are `data-` attributes good for?
+    * _They are good for storing necessary data and at the same time to be valid HTML._
 * Consider HTML5 as an open web platform. What are the building blocks of HTML5?
+    * _section, article, video, canvas, audio, new form elements (email, telephone), SVG, web workers_
 * Describe the difference between a `cookie`, `sessionStorage` and `localStorage`.
 * Describe the difference between `<script>`, `<script async>` and `<script defer>`.
 * Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`? Do you know any exceptions?
 * What is progressive rendering?
 * Have you used different HTML templating languages before?
+    * _Yes, I used underscore templates and handlebars templates._
 
 #### CSS Questions:
 
@@ -75,17 +82,22 @@ This file contains a number of front-end interview questions that can be used wh
 * What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
 * Describe Floats and how they work.
 * Describe z-index and how stacking context is formed.
+    * _In DOM you have a tree and every element is a leaf/branch. According to their position, they also are more up front or in the back and they receive an index. The z-index property overrides that hierarchy, but it also has to have `position: relative`._ 
 * Describe BFC(Block Formatting Context) and how it works.
 * What are the various clearing techniques and which is appropriate for what context?
 * Explain CSS sprites, and how you would implement them on a page or site.
+    * _CSS sprites are a composite of multiple images. Although you can create sprites manually, I would use grunt (or a similar tool) to automate the process and instead of using coordinates for that image, I would use a unique name._
 * What are your favourite image replacement techniques and which do you use when?
 * How would you approach fixing browser-specific styling issues?
+    * _I would start with a normalizing css._
 * How do you serve your pages for feature-constrained browsers?
   * What techniques/processes do you use?
 * What are the different ways to visually hide content (and make it available only for screen readers)?
 * Have you ever used a grid system, and if so, what do you prefer?
 * Have you used or implemented media queries or mobile specific layouts/CSS?
+    * _Yes. `@media (max-device-width: 480px) {}`_
 * Are you familiar with styling SVG?
+    * _No. What I know about SVG is that it a vectorial way to create images and it has XML syntax._
 * How do you optimize your webpages for print?
 * What are some of the "gotchas" for writing efficient CSS?
 * What are the advantages/disadvantages of using CSS preprocessors?
@@ -94,14 +106,35 @@ This file contains a number of front-end interview questions that can be used wh
 * Explain how a browser determines what elements match a CSS selector.
 * Describe pseudo-elements and discuss what they are used for.
 * Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models.
+    * _Every element on a page is a rectangular. The box model refers to the way that rectangular is formed and how its size is calculated._
+    * _What gives a div the ability to implement the box model is the css property `box-sizing`. It can have three values:_ 
+        * _`content-box`: the default value. width = content_
+        * _`border-box`: width = content + padding + border_
+        * _`padding-box`: width = content + padding_
 * What does ```* { box-sizing: border-box; }``` do? What are its advantages?
+    * _I know that it was the default value of IE and the most popular option because it makes it easier to create responsive layouts._
 * List as many values for the display property that you can remember.
+    * _none, block, inline-block, inline, table, table-cell, flex_
 * What's the difference between inline and inline-block?
+    * _Inline can't have width and height set, but inline-block can._
 * What's the difference between a relative, fixed, absolute and statically positioned element?
+    * _Static is the default value. The left, top etc. values don't work._
+    * _The fixed element is positioned fixed regarding to the viewport. Even when the user scrolls the page, the element remain in the same spot._
+    * _Relative is used if you like the static position but you want it changed a little._
+    * _Absolute is used to position an element to a specified position according to the closest parent that has the position set to fixed or absolute, or the original container._
 * The 'C' in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?
+    * _The CSS priority (or specificity) from down to up:_
+        * _type selector: `div, h1`, pseudo-elements: `:before`_
+        * _class selector: `.class-example`, attribute selector: `[type="radio"]`, pseudo-classes: `:hover`_
+        * _id selector: `#myId`_
+        * _inline CSS_
+        * _the `!important` exception_
 * What existing CSS frameworks have you used locally, or in production? How would you change/improve them?
+    * _Foundation Zurb with SASS._
 * Have you played around with the new CSS Flexbox or Grid specs?
+    * _No, I just read about it. I know they are useful for responsive design._
 * How is responsive design different from adaptive design?
+    * _Responsive is when elements are moved and changed according to the screen in real time, and adaptive design is when they change on specific sizes (they snap)._
 * Have you ever worked with retina graphics? If so, when and what techniques did you use?
 * Is there any reason you'd want to use `translate()` instead of *absolute positioning*, or vice-versa? And why?
 

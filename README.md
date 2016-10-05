@@ -148,14 +148,21 @@ This file contains a number of front-end interview questions that can be used wh
 * Explain event delegation
     * _Event delegation is based on event bubbling. Let's say that you have a div with a span inside. You add an event listener on the div and you click the span. The click event happens on the span and then notifies his parent and bubbles up the event. That is event bubbling. In combination with the `target` property of the event, you can use event delegation._
     * _Event delegation is useful because you can have only one event listener and you can find out if a specific element inside your page was clicked. This is also useful if you add elements dynamically and you can have only one event listener on the parent._
-* Explain how `this` works in JavaScript
+* Explain how `this` works in JavaScript !!!__complete this answer__!!!
     * _`this` is changed based on how a function is called._
-* Explain how prototypal inheritance works
+    * _The this object is bound at runtime based on the context in which a function is executed:_
+      * _when used inside global functions,this is equal to window in nostrict mode and undefined in strict mode._
+      * _whereas this is equal to the object when called as an object method._
+      * _as a constructor_
+      * _call and apply_
+      * _bound functions_
+      * _as dom event handler_
+* Explain how prototypal inheritance works !!!__complete this answer__!!!
     * _When an object rabbit inherits from another object animal, in JavaScript that means that there is a special property rabbit.`__proto__ = animal`._
 
         ![alt](http://javascript.info/files/tutorial/intro/object/prototype.png)
     * _When a rabbit property is accessed, and the interpreter can’t find it in rabbit, it follows the `__proto__` link and searches in animal._
-    * _It's not a good practice to modify the ```__proto__``` property because in Opera (I don't know if it still applies) and IE < 9 you don't have access to this property. It's also good to know that the ```__proto__``` property was implemented by Firefox/Chrome without being standardized first. Instead you should use `Object.create`_
+    * _It's not a good practice to modify the `__proto__` property because in Opera (I don't know if it still applies) and IE < 9 you don't have access to this property. It's also good to know that the `__proto__` property was implemented by Firefox/Chrome without being standardized first. Instead you should use `Object.create`_
     ```javascript
         var animal = { eats: true };
         rabbit = Object.create(animal);
@@ -163,20 +170,24 @@ This file contains a number of front-end interview questions that can be used wh
     ```
     * _Another way to the above:_
     ```javascript
-    var animal = { eats: true }
+    var animal = { eats: true };
     
     function Rabbit(name) { 
       this.name = name
     }
     
-    Rabbit.prototype = animal 
+    Rabbit.prototype = animal;
     
-    var rabbit = new Rabbit('John')
+    var rabbit = new Rabbit('John');
     
-    alert( rabbit.eats ) // true, because rabbit.__proto__ == animal
+    alert( rabbit.eats );// true, because rabbit.__proto__ == animal
     ```
     * _More info [here](http://javascript.info/tutorial/inheritance)_
 * What do you think of AMD vs CommonJS?
+    * _CommonJS is a project to define a common API and ecosystem for JavaScript. One part of CommonJS is the Module specification. Node.js and RingoJS are server-side JavaScript runtimes, and yes, both of them implement modules based on the CommonJS Module spec._
+    * _AMD (Asynchronous Module Definition) is another specification for modules. RequireJS is probably the most popular implementation of AMD. One major difference from CommonJS is that AMD specifies that modules are loaded asynchronously - that means modules are loaded in parallel, as opposed to blocking the execution by waiting for a load to finish._
+    * _AMD is generally more used in client-side (in-browser) JavaScript development due to this, and CommonJS Modules are generally used server-side. However, you can use either module spec in either environment - for example, RequireJS offers directions for running in Node.js and browserify is a CommonJS Module implementation that can run in the browser._
+    * _My opinion ... !!!__complete this answer__!!!_ (also give code examples)
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
     * _If you don't wrap the function with parentheses, the JS parser will treat it as a function declaration, not a function expression. A function expression can be called immediately, but a function declaration cannot._
@@ -190,19 +201,21 @@ This file contains a number of front-end interview questions that can be used wh
     * _A variable is attributed this value to specifically tell that this variable is empty. `var a = null; console.log(a) => null`_
 * What is a closure, and how/why would you use one?
     * _In short, a closure is a way to keep access to variables in a function after that function has returned._
+    * Or
+    * _Closures are functions that have access to variables from anthor function's scope. This is often accomplished by creating a function inside a function._
     * _Found a very good explanation [here](http://lucybain.com/blog/2014/closures/)._
     ```javascript
     function stillAClosure(anotherLongLivedVariable) {
           var innerFunction = function inner() {
               return anotherLongLivedVariable;
-          }
+          };
           return innerFunction;
       }
       var closure = stillAClosure("The same string");
       closure(); // returns "The same string"
       closure(); // returns "The same string"
       closure(); // returns "The same string"
-      And here’s even more proof:
+      //And here’s even more proof:
       
       var closure1 = stillAClosure("String 1");
       closure1(); // returns "String 1"
@@ -217,8 +230,13 @@ This file contains a number of front-end interview questions that can be used wh
     ```
     * _A closure is good to keep state in an application, to keep private things private (separation of concern)._
 * What's a typical use case for anonymous functions?
+    * _IIFE_
+    * _event handler_
 * How do you organize your code? (module pattern, classical inheritance?)
+    * _I prefer using babel so I would use classes and inheritance based on ES2015_
 * What's the difference between host objects and native objects?
+    * _Native objects are those objects supplied by JavaScript. Examples of these are String, Number, Array, Image, Date, Math, etc._
+    * _Host objects are objects that are supplied to JavaScript by the browser environment. Examples of these are window, document, forms, etc._
 * Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
     * _The first is a function declaration._
     * _The second is a declaration of a variable with an invocation of a function `Person` and sets the value to its returned value._
@@ -228,6 +246,8 @@ This file contains a number of front-end interview questions that can be used wh
 * Explain `Function.prototype.bind`.
     * _When `bind()` is called, it creates a new function that has its `this` keyword set to the provided value and it can receive also a sequence of arguments._
 * When would you use `document.write()`?
+    * _If you write `document.write("<h1>JS is awesome!</h1>");` it will replace the entire content of the document with that header._
+    * _It seems that the only “approved” time to use document.write() is for third party code to be included (such as ads or Google Analytics). Since document.write() is always available (mostly) it is a good choice for third party vendors to use it to add their scripts. They don’t know what environment you're using, if jQuery is or isn’t available, or what your onload events are. And with document.write() they don’t have to._
 * What's the difference between feature detection, feature inference, and using the UA string?
     * _Feature detection checks a feature for existence, e.g.:_
     ```javascript
@@ -248,10 +268,49 @@ This file contains a number of front-end interview questions that can be used wh
     }
     ```
 * Explain Ajax in as much detail as possible.
+    * _AJAX is short for Asynchronous Javascript + XML. The technique consisted of making server requests for additional data without unloading the page,resulting in a better user experience._
 * What are the advantages and disadvantages of using Ajax?
+    * _Advantages:_
+        * _Easier navigation inside a application._
+        * _You don't have to reload the whole page._
+        * _You can have a only one page with all the interactions on it (SPA) without the need for other pages_
+    * _Disadvantages:_
+        * _If you don't have a way to update your routes (urls), the back and refresh button become useless, also there will be no way to have deep linking._
+        * _If someone has JS disabled on their browser, your page is not accessible by that user._
 * Explain how JSONP works (and how it's not really Ajax).
+    * _Say you're on domain example.com, and you want to make a request to domain example.net. To do so, you need to cross domain boundaries, a no-no in most of browserland._
+      
+      _The one item that bypasses this limitation is `<script>` tags. When you use a script tag, the domain limitation is ignored, but under normal circumstances, you can't really do anything with the results, the script just gets evaluated._
+      
+      _Enter JSONP. When you make your request to a server that is JSONP enabled, you pass a special parameter that tells the server a little bit about your page. That way, the server is able to nicely wrap up its response in a way that your page can handle._
+      
+      _For example, say the server expects a parameter called "callback" to enable its JSONP capabilities. Then your request would look like:_
+      
+      `http://www.example.net/sample.aspx?callback=mycallback`
+      
+      _Without JSONP, this might return some basic JavaScript object, like so:_
+      
+      `{ foo: 'bar' }`
+      
+      _However, with JSONP, when the server receives the "callback" parameter, it wraps up the result a little differently, returning something like this:_
+      
+      `mycallback({ foo: 'bar' });`
+      
+      _As you can see, it will now invoke the method you specified. So, in your page, you define the callback function:_
+      
+      ```javascript
+      mycallback = function(data){
+        alert(data.foo);
+      };
+      ```
+      _And now, when the script is loaded, it'll be evaluated, and your function will be executed. Voila, cross-domain requests!_
+      
+      _It's also worth noting the one major issue with JSONP: you lose a lot of control of the request. For example, there is no "nice" way to get proper failure codes back. As a result, you end up using timers to monitor the request, etc, which is always a bit suspect. The proposition for JSONRequest is a great solution to allowing cross domain scripting, maintaining security, and allowing proper control of the request._
+      
+      _These days (2015), CORS is the recommended approach vs. JSONRequest. JSONP is still useful for older browser support, but given the security implications, unless you have no choice CORS is the better choice._
 * Have you ever used JavaScript templating?
   * If so, what libraries have you used?
+    * _Is this the same as "Have you used different HTML templating languages before?"?_
 * Explain "hoisting".
     * _If you have:_
     ```javascript
@@ -270,8 +329,25 @@ This file contains a number of front-end interview questions that can be used wh
 * What's the difference between an "attribute" and a "property"?
 * Why is extending built-in JavaScript objects not a good idea?
 * Difference between document load event and document DOMContentLoaded event?
+    * _The DOMContentLoaded event is fired when the document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading (the load event can be used to detect a fully-loaded page)._
 * What is the difference between `==` and `===`?
+    * _JavaScript has both strict and type-converting equality comparison. For strict equality the objects being compared must have the same type and:_
+       * _Two strings are strictly equal when they have the same sequence of characters, same length, and same characters in corresponding positions._
+       * _Two numbers are strictly equal when they are numerically equal (have the same number value). NaN is not equal to anything, including NaN. Positive and negative zeros are equal to one another._
+       * _Two Boolean operands are strictly equal if both are true or both are false._
+       * _Two objects are strictly equal if they refer to the same Object._
+       * _Null and Undefined types are == (but not ===). [I.e. (Null==Undefined) is true but (Null===Undefined) is false]_
 * Explain the same-origin policy with regards to JavaScript.
+    * _The same-origin policy restricts how a document or script loaded from one origin can interact with a resource from another origin. It is a critical security mechanism for isolating potentially malicious documents._
+    * _Two pages have the same origin if the protocol, port (if one is specified), and host are the same for both pages. The following table gives examples of origin comparisons to the URL http://store.company.com/dir/page.html:_
+    
+    | URL        | Outcome           | Reason  |
+    | ------------- |:-------------:| -----:|
+    | http://store.company.com/dir2/other.html | Success |	 
+    | http://store.company.com/dir/inner/another.html | Success|	 
+    | https://store.company.com/secure.html |Failure | Different protocol|
+    | http://store.company.com:81/dir/etc.html |Failure |Different port|
+    | http://news.company.com/dir/other.html |Failure |Different host|
 * Make this work:
 ```javascript
 duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]

@@ -352,7 +352,18 @@ This file contains a number of front-end interview questions that can be used wh
 ```javascript
 duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 ```
+    
+        function duplicate(arr) {
+            return arr.concat(arr);
+        }
+    
 * Why is it called a Ternary expression, what does the word "Ternary" indicate?
+    * _A unary operand accepts one parameter, e.g. -1, where - is the operand, and 1 is the parameter._
+    
+      _A binary operand accepts two parameters, e.g. 2 + 3, where + is the operand, and 2 and 3 are the parameters._
+       
+      _So a ternary operand accepts three parameters._
+    * _In programming the ternary operand we use is a rewrite of an if statement. `condition ? true_block : false_block`_
 * What is `"use strict";`? what are the advantages and disadvantages to using it?
     * _This enables Strict Mode that allows you to place a program or a function in a strict operating context. This prevents certain actions to be taken and throws more exceptions._
     * _It catches some common coding bloopers, throwing exceptions. (ex. assigning `foo = 'bar';` without first defining `foo` will throw an exception)_
@@ -361,8 +372,14 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     * _More about Strict Mode [here](http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/)._
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
+    * _It’s harder to read the code and reason about it when variables seem to appear out of thin air (but really from the global scope)._
+    * _Anyone can update a global variable from any point in the program at any time (and from any thread if there’s more than one going)._
+    * _General code smell - if you're too lazy to put the variable only where it needs to be then what other corners are you cutting?_
+    * _It’s probable that you'll encounter global variable name clashes. Since there’s only one namespace you're more likely to double up on a variable name._
 * Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
 * Explain what a single page app is and how to make one SEO-friendly.
+    * _I consider a SPA a web application that is built on JS MVC frameworks. I don't consider a SPA a infinity scrolling page (pinterest) or a single page theme on wordpress._
+    * _A problem might be with the router of your web app. If it's not configured to use true urls (using the new HTML5 History API), the robots parsing your site will have trouble interpreting pages with `url/#/my/page`, because they will consider it to be the same page as before the `#`._
 * What is the extent of your experience with Promises and/or their polyfills?
 * What are the pros and cons of using Promises instead of callbacks?
 * What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?

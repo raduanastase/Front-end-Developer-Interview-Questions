@@ -258,7 +258,7 @@ This file contains a number of front-end interview questions that can be used wh
     * _IIFE_
     * _event handler_
 * How do you organize your code? (module pattern, classical inheritance?)
-    * _I prefer using babel so I would use classes and inheritance based on ES2015_
+    * _I prefer using babel so I would use classes and inheritance based on ES2015. (Not a complete answer, bring in the design patters used)_
 * What's the difference between host objects and native objects?
     * _Native objects are those objects supplied by JavaScript. Examples of these are String, Number, Array, Image, Date, Math, etc._
     * _Host objects are objects that are supplied to JavaScript by the browser environment. Examples of these are window, document, forms, etc._
@@ -411,9 +411,25 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 * What tools and techniques do you use debugging JavaScript code?
 * What language constructions do you use for iterating over object properties and array items?
 * Explain the difference between mutable and immutable objects.
+  * _Answer: A mutable object can have its values and keys changed, where as a immutable object can't be changed whatsoever._
   * What is an example of an immutable object in JavaScript?
+    * _Strings and numbers are immutable but they're not considered objects. You can obtain an immutable object using `Object.freeze()`._
+    * ```javascript
+        var o = {a: 1, b:2};
+    
+        o.a = 3;
+        //nothing happens, o remains the same (this will fail silently or by throwing a TypeError (most commonly, but not exclusively, when in strict mode)
+    * But the freeze only works one level. 
   * What are the pros and cons of immutability?
+    * _Pros:_
+        * _If you keep your application state in an immutable object, you can track down your object history more easily_
+        * _(add more)_
+    * _Cons:_
+        * _It needs more attention when working with it, because mutability comes to us more naturally_
+        * _(add more)_
   * How can you achieve immutability in your own code?
+    * _You can use Immutable.js. If you don't want to use this, you can also use (for Objects) `Object.assign({}, obj)` or (if not in ES2015) `_.extend({}, obj)` or `$.extend({}, obj)`
+    * For arrays `[].contact(list)`
 * Explain the difference between synchronous and asynchronous functions.
 * What is event loop?
   * What is the difference between call stack and task queue?
@@ -489,6 +505,13 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     hw.echo();
     ```
     * _Detailed explanation [here](http://eli.thegreenplace.net/2013/10/22/classical-inheritance-in-javascript-es5)_
+* Is string an object in JS?
+    * _"Everything is an object"... that's one of the big misconceptions that exist all around the language. Not everything is an object, there are what we call primitive values, which are string, number, boolean, null, and undefined. That's true, a string is a primitive value, but you can access all the methods inherited from String.prototype as if it were an object. The property accessor operators (the dot and the bracket notation), temporarily convert the string value to a String object (__coercion__), for being able to access those methods._
+* What do you know about functional programming? What are the ups and downs?
+* Give examples of some functional programming concepts.
+* What JS design patterns do you know?
+    * _Singleton: _
+    * _Factory: _
 
 #### Testing Questions:
 

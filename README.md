@@ -96,17 +96,42 @@ This file contains a number of front-end interview questions that can be used wh
   * What techniques/processes do you use?
 * What are the different ways to visually hide content (and make it available only for screen readers)?
 * Have you ever used a grid system, and if so, what do you prefer?
+    * _I've used the grid system from Foundation and Bootstrap. I don't have a favourite because they both are very similar, but I worked more with Foundation._
 * Have you used or implemented media queries or mobile specific layouts/CSS?
     * _Yes. `@media (max-device-width: 480px) {}`_
 * Are you familiar with styling SVG?
     * _No. What I know about SVG is that it a vectorial way to create images and it has XML syntax._
 * How do you optimize your webpages for print?
+    * _I wrote an article about this. [http://codethatcounts.com/making-your-page-printable/]_
 * What are some of the "gotchas" for writing efficient CSS?
+    * _One part of the answer I've given three questions down._
 * What are the advantages/disadvantages of using CSS preprocessors?
   * Describe what you like and dislike about the CSS preprocessors you have used.
+    * _Preprocessors help you organize your css code better. You can have multiple files and after compilation have only one. Also for writing inside those files it's easier to write because you can add children's properties inside a parent._
+    * ```scss
+        /* SCSS */
+        .parent {
+            color: blue;
+      
+            .child {
+                color: red;
+            }
+        }
+    * ```css
+        /* CSS */
+        .parent {
+            color: blue;
+        }
+        .parent .child {
+            color: red;
+        }
+    
 * How would you implement a web design comp that uses non-standard fonts?
 * Explain how a browser determines what elements match a CSS selector.
+    * _Let's say we have `#test .class-test ul li`. The CSS engine will find at first all the li's, then all the ul's that have li, then the elements that have a class-test that have an ul and then the id test that has a class-test. That's why it's more efficient to have a unique selector because the engine will find it much faster._
 * Describe pseudo-elements and discuss what they are used for.
+    * _`::after, ::before, ::first-letter, ::first-line` etc. You will find them sometimes with double colons (::) instead of just one, because this is CSS3 attempt to distinguish between pseudo-classes and pseudo-elements. Most browsers support both values._
+    * _`::after, ::before` are used to match a virtual child of the selected elements. It is typically  used to add cosmetic content to an element by using the content CSS property._
 * Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models.
     * _Every element on a page is a rectangular. The box model refers to the way that rectangular is formed and how its size is calculated._
     * _What gives a div the ability to implement the box model is the css property `box-sizing`. It can have three values:_ 
@@ -468,9 +493,18 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 #### Testing Questions:
 
 * What are some advantages/disadvantages to testing your code?
+    * _Advantages:_
+        * _If someone changes something in the code, it can be caught at unit testing (refactoring made easy with a safety net)_
+        * _For a new-comer, reading the unit tests could shed light on the written code_
+    * _Disadvantages:_
+        * _It takes time_
+        * _It takes time to maintain the tests if the logic changes_
 * What tools would you use to test your code's functionality?
+    * _I used mocha and chai for asserting and now I'm using Enzyme for testing React components. I also fiddled around with Jest._
 * What is the difference between a unit test and a functional/integration test?
+    * _A unit test tests the functionality of the code and an integration test test how something works in the bigger picture (sometimes with interaction, databases and it's much more complex)_
 * What is the purpose of a code style linting tool?
+    * _It's good to use a linting tool because it helps you be more constant in your writing and if someone reads your code, the chances that he could understand your code increase._
 
 #### Performance Questions:
 
@@ -497,22 +531,32 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 *Question: What is the value of `foo`?*
 ```javascript
 var foo = 10 + '20';
+
+'1020';
 ```
 
 *Question: How would you make this work?*
 ```javascript
 add(2, 5); // 7
 add(2)(5); // 7
+
+var add = function(x) {
+    return function(y) { return x + y; };
+}
 ```
 
 *Question: What value is returned from the following statement?*
 ```javascript
 "i'm a lasagna hog".split("").reverse().join("");
+
+"goh angasal a m'i"
 ```
 
 *Question: What is the value of `window.foo`?*
 ```javascript
 ( window.foo || ( window.foo = "bar" ) );
+
+"bar"
 ```
 
 *Question: What is the outcome of the two alerts below?*
@@ -523,6 +567,12 @@ var foo = "Hello";
   alert(foo + bar);
 })();
 alert(foo + bar);
+
+"Hello World"
+
+and 
+
+Uncaught ReferenceError: bar is not defined
 ```
 
 *Question: What is the value of `foo.length`?*
@@ -530,6 +580,8 @@ alert(foo + bar);
 var foo = [];
 foo.push(1);
 foo.push(2);
+
+2
 ```
 
 *Question: What is the value of `foo.x`?*
@@ -537,6 +589,16 @@ foo.push(2);
 var foo = {n: 1};
 var bar = foo;
 foo.x = foo = {n: 2};
+
+//--THIS IS KIND OF TRICKY--//
+foo.x == undefined;
+//why?
+/* Because bar now keeps the reference from the first declaration of foo, that is
+  bar == {n: 1}
+  Now foo.x is {n: 2}, but then foo is overwritten by {n: 2}. That's why
+  foo == {n: 2}
+  bar == {n: 1, x: {n: 2}}
+ */
 ```
 
 *Question: What does the following code print?*
@@ -546,16 +608,26 @@ setTimeout(function() {
   console.log('two');
 }, 0);
 console.log('three');
+
+'one'
+'three'
+'two'
+
+/* Although timeout of 0 would mean that it should be run immediatelly, in JS priority have the operations that are on the top level */
 ```
 
 #### Fun Questions:
 
 * What's a cool project that you've recently worked on?
 * What are some things you like about the developer tools you use?
+    * _In PHP Storm I like the git, eslint, testing integrations_
 * Who inspires you in the front-end community?
+    * _The dynamic of this field can be exhausting and thrilling. The fact that as time goes by, JS reaches new and new frontiers (React Native/Node/Electron) ... makes me think, where will it end?_
 * Do you have any pet projects? What kind?
+    * _I have a project that I work on for a humanitarian non-profit. It's built with Laravel, Backbone and SCSS._
 * What's your favorite feature of Internet Explorer?
 * How do you like your coffee?
+    * _I don't drink coffee :)_
 
 
 #### Contributors:

@@ -56,8 +56,9 @@ This file contains a number of front-end interview questions that can be used wh
         * _add images to a sprite_
     * _Perceived:_
         * _showing a spinner_
-        * _progressive loading - the way medium loads its images (small image at first + scale up + blur)_
+        * _progressive loading/rendering - the way medium loads its images (small image at first + scale up + blur)_
             * _I think this is the same as content placeholder - the way facebook loads its post_
+            * _Lazy loading - loading an image when it comes into the browser's viewport._
 * If you jumped on a project and they used tabs and you used spaces, what would you do?
     * _I would probably go with the others use_
 * !!! Describe how you would create a simple slideshow page.
@@ -91,9 +92,9 @@ This file contains a number of front-end interview questions that can be used wh
     * _It's a way to tell the browser what type of document do you use. If it's omitted, browsers tend to guess and you may end up with some issues. It's also used for validating the document according to the mentioned doctype._
     * _example `<!DOCTYPE html>`_
 * What's the difference between full standards mode, almost standards mode and quirks mode?
-    * _As far as I know, at first developers wrote two version of a page: one for IE and another for Netscape. After the introduction of web standards they couldn't enforce those standards because they could brake a lot of pages, so the browsers implemented quirks mode (when a browsers emulates the another browsers to support that page), almost standard mode (when browsers emulate only some of the quirks) and full standards (where the page is interpreted as the developer wanted it)._
+    * _As far as I know, at first developers wrote two version of a page: one for IE and another for Netscape. After the introduction of web standards they couldn't enforce those standards because they could brake a lot of pages, so the browsers implemented quirks mode (when a browsers emulates another browsers to support that page), almost standard mode (when browsers emulate only some of the quirks) and full standards (where the page is interpreted as the developer wanted it)._
 * What's the difference between HTML and XHTML?
-    * _In HTML things are way more permissive over the correctness of the writing. Start tags don't necessarily have to end, attributes don't have to have quotes, only <br/>, <img/> and <link/> are permitted as self enclosed._
+    * _In HTML things are way more permissive over the correctness of the writing. Start tags don't necessarily have to end, attributes don't have to have quotes, only `<br/>, <img/> and <link/>` are permitted as self enclosed._
 * !!! Are there any problems with serving pages as `application/xhtml+xml`?
 * !!! How do you serve a page with content in multiple languages?
 * !!! What kind of things must you be wary of when design or developing for multilingual sites?
@@ -101,17 +102,28 @@ This file contains a number of front-end interview questions that can be used wh
     * _They are good for storing necessary data and at the same time to be valid HTML._
 * Consider HTML5 as an open web platform. What are the building blocks of HTML5?
     * _section, article, video, canvas, audio, new form elements (email, telephone), SVG, web workers_
-* !!! Describe the difference between a `cookie`, `sessionStorage` and `localStorage`.
+* Describe the difference between a `cookie`, `sessionStorage` and `localStorage`.
+    * _localStorage and sessionStorage are relatively new APIs (meaning not all legacy browsers will support them) and are near identical (both in APIs and capabilities) with the sole exception of persistence. sessionStorage (as the name suggests) is only available for the duration of the browser session (and is deleted when the window is closed) - it does however survive page reloads. These can contain JS primitives but not Objects or Arrays_
+    * _cookies have a an expiration date and only store strings_
 * !!! Describe the difference between `<script>`, `<script async>` and `<script defer>`.
-* !!! Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`? Do you know any exceptions?
-* !!! What is progressive rendering?
+* Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`? !!! Do you know any exceptions?
+    * _CSS should load first to avoid FOUC. Also if we add the script tags at the bottom, the user would be able to see the content of the page faster._
+* What is progressive rendering?
+    * _Progressive rendering is the name given to techniques used to render content for display as quickly as possible._ 
+    * _The answer from "Name 3 ways to decrease page load (perceived or actual load time)"_
 * Have you used different HTML templating languages before?
     * _Yes, I used underscore templates and handlebars templates._
 
 #### CSS Questions:
 
-* !!! What is the difference between classes and IDs in CSS?
-* !!! What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
+* What is the difference between classes and IDs in CSS?
+    * _Classes can be applied to more elements._
+    * _Ids only to one element_
+    * _Id selectors always trump classes selector_
+* What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
+    * _Resetting: Removing all styling from every element - margins, padding, etc. All elements will have the same font-size, same line-height and no spacing._
+    * _Normalizing: Making elements render consistently across browsers. So all h1s will have the same size across browsers_
+    * _Normalizing - reasons are in the definition_
 * !!! Describe Floats and how they work.
 * Describe z-index and how stacking context is formed.
     * _In DOM you have a tree and every element is a leaf/branch. According to their position, they also are more up front or in the back and they receive an index. The z-index property overrides that hierarchy, but it also has to have `position: relative`._ 

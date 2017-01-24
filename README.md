@@ -124,7 +124,11 @@ This file contains a number of front-end interview questions that can be used wh
     * _Resetting: Removing all styling from every element - margins, padding, etc. All elements will have the same font-size, same line-height and no spacing._
     * _Normalizing: Making elements render consistently across browsers. So all h1s will have the same size across browsers_
     * _Normalizing - reasons are in the definition_
-* !!! Describe Floats and how they work.
+* Describe Floats and how they work.
+    * _It’s hard to handle it because it not only affects the element you’re targetting, but also the surroundings: the parent, the siblings, the following elements…_
+    * _The thing is, a float will take an element out of the flow, a bit like position absolute or position fixed but not exactly. I say not exactly because the surrounding elements are mostly aware that the floated element is still there (they will wrap around it), but the parent won’t.
+       The float is directly related to the clear property, which reintroduces the floated element in the flow, by placing a cleared element after the floated one. There are other clear techniques, like putting a float or an overflow visible on the parent, but it only delay the issue. So I usually use a cleared element._
+    * _A parent with only floated childs will have a height of zero, as if the children weren’t there._
 * Describe z-index and how stacking context is formed.
     * _In DOM you have a tree and every element is a leaf/branch. According to their position, they also are more up front or in the back and they receive an index. The z-index property overrides that hierarchy, but it also has to have `position: relative`._ 
 * !!! Describe BFC(Block Formatting Context) and how it works.

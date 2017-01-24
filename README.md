@@ -407,10 +407,41 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     * _I consider a SPA a web application that is built on JS MVC frameworks. I don't consider a SPA a infinity scrolling page (pinterest) or a single page theme on wordpress._
     * _A problem might be with the router of your web app. If it's not configured to use true urls (using the new HTML5 History API), the robots parsing your site will have trouble interpreting pages with `url/#/my/page`, because they will consider it to be the same page as before the `#`._
 * What is the extent of your experience with Promises and/or their polyfills?
+    * _I didn't use promises much as described in ES2015 __(then, catch)__, but I bumped into the concept while using `$.ajax` __(done, fail, always)__._
+    * ```javascript
+        var promise = new Promise((resolve, reject) => {
+            if(true) {
+              resolve(value);
+            } else {
+              reject();
+            }
+        });
+      
+      Promise.all(iterable); //return a promise that fulfills if all the promises are met
+      Promise.race(iterable); //returns a promise that fulfills/rejects if at least one of them fulfills/rejects
+
 * What are the pros and cons of using Promises instead of callbacks?
+    * _Pros:_
+        * _You get rid of the callback hell_
+        * ![alt](http://icompile.eladkarako.com/wp-content/uploads/2016/01/icompile.eladkarako.com_callback_hell.gif)
+    * _Cons:_
+        * _You don't need to use a promise if you only have one callback. Callbacks have their place._
 * What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
+    * _I didn't have the chance to use TypeScript or Elm or other language that compiles into JS, but here is what I heard:_
+        * _You can write your code in more OO/functional way_
+        * _You don't have to worry about ES2015, ES2016 etc, your language doesn't change_
+        * _You don't really know JS and this means that you can't contribute to the JS community_
+        * _You can't use npm packages out of the box, you have to create a wrapper for them_
 * What tools and techniques do you use debugging JavaScript code?
+    * _Chrome developer tools, `debugger` in code, `console.log`_
 * What language constructions do you use for iterating over object properties and array items?
+    * _Arrays:_
+        * _`for(var i = 0; i < arr.length; i++)`_
+        * _`arr.forEach((element) => {});` - doesn't support break - use instead `arr.every((element) => {})`_
+    * _Objects:_
+        * _`for(value in object)` - iterates over property keys, including inherited ones_
+        * _`Object.keys(obj)` and then apply one of the above (from arrays)_
+        * _`Object.entries(obj)` it returns `[key, value]` pairs. Is an experimental technologies, not yet standardized._
 * Explain the difference between mutable and immutable objects.
   * _Answer: A mutable object can have its values and keys changed, where as a immutable object can't be changed whatsoever._
   * What is an example of an immutable object in JavaScript?
@@ -435,6 +466,8 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     * _You can use Immutable.js. If you don't want to use this, you can also use (for Objects) `Object.assign({}, obj)` or (if not in ES2015) `_.extend({}, obj)` or `$.extend({}, obj)`
     * _For arrays `[].contact(list)`_
 * Explain the difference between synchronous and asynchronous functions.
+    * _Synchronous way: It waits for each operation to complete, after that only it executes the next operation._
+    * _Asynchronous way: It never waits for each operation to complete. The result of each operation will be handled once the result is available._
 * What is event loop?
   * What is the difference between call stack and task queue?
 * Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`

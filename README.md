@@ -29,8 +29,10 @@ This file contains a number of front-end interview questions that can be used wh
 * What did you learn yesterday/this week?
     * _I learned that $.data() receives either camelCase or dashed properties._
     * _I learned how the CSS engine uses selectors_
-* !!! What excites or interests you about coding?
-* !!! What is a recent technical challenge you experienced and how did you solve it?
+* What excites or interests you about coding?
+    * _The fact that you can build by yourself the solution to other people's problems._
+* What is a recent technical challenge you experienced and how did you solve it?
+    * _Making a printable layout for a page. (article that I wrote for www.codethatcounts.com)_
 * !!! What UI, Security, Performance, SEO, Maintainability or Technology considerations do you make while building a web application or site?
 * Talk about your preferred development environment.
     * _I like the IDEs from JetBrains_
@@ -39,21 +41,40 @@ This file contains a number of front-end interview questions that can be used wh
 * !!! Can you describe your workflow when you create a web page?
 * If you have 5 different stylesheets, how would you best integrate them into the site?
     * _I would most likely use SASS or other CSS compiler and I would import them into one file and I would minify that file._
-* !!! Can you describe the difference between progressive enhancement and graceful degradation?
+* Can you describe the difference between progressive enhancement and graceful degradation?
+    * _So, graceful degradation is the practice of building your web functionality so that it provides a certain level of user experience in more modern browsers, but it will also degrade gracefully to a lower level of user in experience in older browsers. This lower level is not as nice to use for your site visitors, but it does still provide them with the basic functionality that they came to your site to use; things do not break for them._
+    * _Progressive enhancement is similar, but it does things the other way round. You start by establishing a basic level of user experience that all browsers will be able to provide when rendering your web site, but you also build in more advanced functionality that will automatically be available to browsers that can use it._
 * How would you optimize a website's assets/resources?
     * _As I said two questions up, I would compile all my css into one css file, I would put all my small images into one sprite and I would optimize it for the web, I would minify the js, css._
-* !!! How many resources will a browser download from a given domain at a time?
-  * !!! What are the exceptions?
-* !!! Name 3 ways to decrease page load (perceived or actual load time).
+* How many resources will a browser download from a given domain at a time?
+    * _IE7 allowed only two concurrent connections per host. But most browsers today allow more than that. IE8 allows 6 concurrent connections, Chrome allows 6, and Firefox allows 8. So if your web page only has 6 images, for example, then it'd really be pointless to spread your images across multiple subdomains._
+  * What are the exceptions?
+    * _You can use subdomains to increase the concurrency level_
+* Name 3 ways to decrease page load (perceived or actual load time).
+    * _Actual:_
+        * _minify and gzip_
+        * _add images to a sprite_
+    * _Perceived:_
+        * _showing a spinner_
+        * _progressive loading - the way medium loads its images (small image at first + scale up + blur)_
+            * _I think this is the same as content placeholder - the way facebook loads its post_
 * If you jumped on a project and they used tabs and you used spaces, what would you do?
     * _I would probably go with the others use_
 * !!! Describe how you would create a simple slideshow page.
 * If you could master one technology this year, what would it be?
     * _Node_
-* !!! Explain the importance of standards and standards bodies.
+* Explain the importance of standards and standards bodies.
+    * _Standards describe how a thing works and should work. This is extremely important because when a developer writes something he expects that thing to run the same in all browsers._
+    * _Standard bodies are the committees that regulate software and hardware (I think)_
 * What is Flash of Unstyled Content? How do you avoid FOUC?
     * _When a site appears, for a moment, with text without styling, and after that it applies the styling._
-* !!! Explain what ARIA and screenreaders are, and how to make a website accessible.
+    * _The styles should be placed in order that they are needed and it should be avoided applying styles from script_
+* Explain what ARIA and screenreaders are, and how to make a website accessible.
+    * _ARIA - Accessible Rich Internet Applications (ARIA) defines ways to make Web content and Web applications (especially those developed with Ajax and JavaScript) more accessible to people with disabilities._
+    * ![alt](http://accessibleculture.org/research-files/ozewai2011/images/html5OnlyTestCase.png)
+    * ![alt](http://accessibleculture.org/research-files/ozewai2011/images/html5AriaTestCase.png)
+    * _Every browser has an accessibility API - interface between browser and screen reader_
+    * _You should make your webpage syntactic, add alt to images._
 * Explain some of the pros and cons for CSS animations versus JavaScript animations.
     * _CSS animations are best for some things - hardware accelerated (3d transform and opacity), hover states_
     * _If you want to create a timeline, pause, revert etc. it's almost impossible to do it in CSS3. You can easily to that with libraries like GASP_
@@ -61,7 +82,7 @@ This file contains a number of front-end interview questions that can be used wh
     * _Compatibility - CSS3 transitions don't work in older browsers and every browser engine handles them differently_
 * What does CORS stand for and what issue does it address?
     * _Cross Origin Resource Sharing_
-    * ___same-origin policy__ is an important concept in web security because it prevents a malicious script from obtaining sensitive data through the DOM_
+    * _**same-origin policy** is an important concept in web security because it prevents a malicious script from obtaining sensitive data through the DOM_
     * _CORS defines a set of headers that allow the browser and server to communicate about which requests are (and are not) allowed._
 
 #### HTML Questions:

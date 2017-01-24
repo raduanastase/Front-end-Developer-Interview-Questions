@@ -54,8 +54,15 @@ This file contains a number of front-end interview questions that can be used wh
 * What is Flash of Unstyled Content? How do you avoid FOUC?
     * _When a site appears, for a moment, with text without styling, and after that it applies the styling._
 * !!! Explain what ARIA and screenreaders are, and how to make a website accessible.
-* !!! Explain some of the pros and cons for CSS animations versus JavaScript animations.
-* !!! What does CORS stand for and what issue does it address?
+* Explain some of the pros and cons for CSS animations versus JavaScript animations.
+    * _CSS animations are best for some things - hardware accelerated (3d transform and opacity), hover states_
+    * _If you want to create a timeline, pause, revert etc. it's almost impossible to do it in CSS3. You can easily to that with libraries like GASP_
+    * _In CSS3 you can't animate multiple properties at once, and JS solutions allow you to animate any numeric property_
+    * _Compatibility - CSS3 transitions don't work in older browsers and every browser engine handles them differently_
+* What does CORS stand for and what issue does it address?
+    * _Cross Origin Resource Sharing_
+    * ___same-origin policy__ is an important concept in web security because it prevents a malicious script from obtaining sensitive data through the DOM_
+    * _CORS defines a set of headers that allow the browser and server to communicate about which requests are (and are not) allowed._
 
 #### HTML Questions:
 
@@ -695,7 +702,8 @@ console.log('three');
     * _In PHP Storm I like the git, eslint, testing integrations_
 * What inspires you in the front-end community?
     * _The dynamic of this field can be exhausting and thrilling. The fact that as time goes by, JS reaches new and new frontiers (React Native/Node/Electron) ... makes me think, where will it end?_
-* !!! Who inspires you in the front-end community?
+* Who inspires you in the front-end community?
+    * _Eric Elliott - because he combines the love for this field with the love to teach others and improve the human condition_
 * Do you have any pet projects? What kind?
     * _I have a project that I work on for a humanitarian non-profit. It's built with Laravel, Backbone and SCSS._
 * !!! What's your favorite feature of Internet Explorer?

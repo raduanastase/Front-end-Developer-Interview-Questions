@@ -423,14 +423,17 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     * But the freeze only works one level. 
   * What are the pros and cons of immutability?
     * _Pros:_
-        * _If you keep your application state in an immutable object, you can track down your object history more easily_
-        * _(add more)_
+        * _Immutability and virtual DOM make the React apps to be blazing fast._
+        * _You don't need to worry about how an object may evolve over time because each time you have a new object._
+        * _One copy of an object is just as good as another, so you can cache objects or re-use the same object multiple times._
+        * _This also makes debugging easier because you can see the state of your application in any point in time._
     * _Cons:_
         * _It needs more attention when working with it, because mutability comes to us more naturally_
-        * _(add more)_
+        * _Allocating lots and lots of small objects rather than modifying ones you already have can have a performance impact. Usually the complexity of either the allocator or the garbage collector depends on the number of objects on the heap. __This would be a valid point if we were to add immutability all over the place__._
+        * _It’s not recommended on small data sets._
   * How can you achieve immutability in your own code?
     * _You can use Immutable.js. If you don't want to use this, you can also use (for Objects) `Object.assign({}, obj)` or (if not in ES2015) `_.extend({}, obj)` or `$.extend({}, obj)`
-    * For arrays `[].contact(list)`
+    * _For arrays `[].contact(list)`_
 * Explain the difference between synchronous and asynchronous functions.
 * What is event loop?
   * What is the difference between call stack and task queue?

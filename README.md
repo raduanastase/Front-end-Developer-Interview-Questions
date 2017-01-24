@@ -28,32 +28,34 @@ This file contains a number of front-end interview questions that can be used wh
 
 * What did you learn yesterday/this week?
     * _I learned that $.data() receives either camelCase or dashed properties._
-* What excites or interests you about coding?
-* What is a recent technical challenge you experienced and how did you solve it?
-* What UI, Security, Performance, SEO, Maintainability or Technology considerations do you make while building a web application or site?
+    * _I learned how the CSS engine uses selectors_
+* !!! What excites or interests you about coding?
+* !!! What is a recent technical challenge you experienced and how did you solve it?
+* !!! What UI, Security, Performance, SEO, Maintainability or Technology considerations do you make while building a web application or site?
 * Talk about your preferred development environment.
     * _I like the IDEs from JetBrains_
 * Which version control systems are you familiar with?
     * _Although I worked 4 years with SVN, I prefer git._
-* Can you describe your workflow when you create a web page?
+* !!! Can you describe your workflow when you create a web page?
 * If you have 5 different stylesheets, how would you best integrate them into the site?
     * _I would most likely use SASS or other CSS compiler and I would import them into one file and I would minify that file._
-* Can you describe the difference between progressive enhancement and graceful degradation?
+* !!! Can you describe the difference between progressive enhancement and graceful degradation?
 * How would you optimize a website's assets/resources?
     * _As I said two questions up, I would compile all my css into one css file, I would put all my small images into one sprite and I would optimize it for the web, I would minify the js, css._
-* How many resources will a browser download from a given domain at a time?
-  * What are the exceptions?
-* Name 3 ways to decrease page load (perceived or actual load time).
+* !!! How many resources will a browser download from a given domain at a time?
+  * !!! What are the exceptions?
+* !!! Name 3 ways to decrease page load (perceived or actual load time).
 * If you jumped on a project and they used tabs and you used spaces, what would you do?
-* Describe how you would create a simple slideshow page.
+    * _I would probably go with the others use_
+* !!! Describe how you would create a simple slideshow page.
 * If you could master one technology this year, what would it be?
-    * _React_
-* Explain the importance of standards and standards bodies.
+    * _Node_
+* !!! Explain the importance of standards and standards bodies.
 * What is Flash of Unstyled Content? How do you avoid FOUC?
     * _When a site appears, for a moment, with text without styling, and after that it applies the styling._
-* Explain what ARIA and screenreaders are, and how to make a website accessible.
-* Explain some of the pros and cons for CSS animations versus JavaScript animations.
-* What does CORS stand for and what issue does it address?
+* !!! Explain what ARIA and screenreaders are, and how to make a website accessible.
+* !!! Explain some of the pros and cons for CSS animations versus JavaScript animations.
+* !!! What does CORS stand for and what issue does it address?
 
 #### HTML Questions:
 
@@ -64,37 +66,37 @@ This file contains a number of front-end interview questions that can be used wh
     * _As far as I know, at first developers wrote two version of a page: one for IE and another for Netscape. After the introduction of web standards they couldn't enforce those standards because they could brake a lot of pages, so the browsers implemented quirks mode (when a browsers emulates the another browsers to support that page), almost standard mode (when browsers emulate only some of the quirks) and full standards (where the page is interpreted as the developer wanted it)._
 * What's the difference between HTML and XHTML?
     * _In HTML things are way more permissive over the correctness of the writing. Start tags don't necessarily have to end, attributes don't have to have quotes, only <br/>, <img/> and <link/> are permitted as self enclosed._
-* Are there any problems with serving pages as `application/xhtml+xml`?
-* How do you serve a page with content in multiple languages?
-* What kind of things must you be wary of when design or developing for multilingual sites?
+* !!! Are there any problems with serving pages as `application/xhtml+xml`?
+* !!! How do you serve a page with content in multiple languages?
+* !!! What kind of things must you be wary of when design or developing for multilingual sites?
 * What are `data-` attributes good for?
     * _They are good for storing necessary data and at the same time to be valid HTML._
 * Consider HTML5 as an open web platform. What are the building blocks of HTML5?
     * _section, article, video, canvas, audio, new form elements (email, telephone), SVG, web workers_
-* Describe the difference between a `cookie`, `sessionStorage` and `localStorage`.
-* Describe the difference between `<script>`, `<script async>` and `<script defer>`.
-* Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`? Do you know any exceptions?
-* What is progressive rendering?
+* !!! Describe the difference between a `cookie`, `sessionStorage` and `localStorage`.
+* !!! Describe the difference between `<script>`, `<script async>` and `<script defer>`.
+* !!! Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`? Do you know any exceptions?
+* !!! What is progressive rendering?
 * Have you used different HTML templating languages before?
     * _Yes, I used underscore templates and handlebars templates._
 
 #### CSS Questions:
 
-* What is the difference between classes and IDs in CSS?
-* What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
-* Describe Floats and how they work.
+* !!! What is the difference between classes and IDs in CSS?
+* !!! What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
+* !!! Describe Floats and how they work.
 * Describe z-index and how stacking context is formed.
     * _In DOM you have a tree and every element is a leaf/branch. According to their position, they also are more up front or in the back and they receive an index. The z-index property overrides that hierarchy, but it also has to have `position: relative`._ 
-* Describe BFC(Block Formatting Context) and how it works.
-* What are the various clearing techniques and which is appropriate for what context?
+* !!! Describe BFC(Block Formatting Context) and how it works.
+* !!! What are the various clearing techniques and which is appropriate for what context?
 * Explain CSS sprites, and how you would implement them on a page or site.
     * _CSS sprites are a composite of multiple images. Although you can create sprites manually, I would use grunt (or a similar tool) to automate the process and instead of using coordinates for that image, I would use a unique name._
-* What are your favourite image replacement techniques and which do you use when?
+* !!! What are your favourite image replacement techniques and which do you use when?
 * How would you approach fixing browser-specific styling issues?
     * _I would start with a normalizing css._
-* How do you serve your pages for feature-constrained browsers?
-  * What techniques/processes do you use?
-* What are the different ways to visually hide content (and make it available only for screen readers)?
+* !!! How do you serve your pages for feature-constrained browsers?
+  * !!! What techniques/processes do you use?
+* !!! What are the different ways to visually hide content (and make it available only for screen readers)?
 * Have you ever used a grid system, and if so, what do you prefer?
     * _I've used the grid system from Foundation and Bootstrap. I don't have a favourite because they both are very similar, but I worked more with Foundation._
 * Have you used or implemented media queries or mobile specific layouts/CSS?
@@ -127,7 +129,7 @@ This file contains a number of front-end interview questions that can be used wh
             color: red;
         }
     
-* How would you implement a web design comp that uses non-standard fonts?
+* !!! How would you implement a web design comp that uses non-standard fonts?
 * Explain how a browser determines what elements match a CSS selector.
     * _Let's say we have `#test .class-test ul li`. The CSS engine will find at first all the li's, then all the ul's that have li, then the elements that have a class-test that have an ul and then the id test that has a class-test. That's why it's more efficient to have a unique selector because the engine will find it much faster._
 * Describe pseudo-elements and discuss what they are used for.
@@ -157,17 +159,17 @@ This file contains a number of front-end interview questions that can be used wh
         * _id selector: `#myId`_
         * _inline CSS_
         * _the `!important` exception_
-* What existing CSS frameworks have you used locally, or in production? How would you change/improve them?
+* What existing CSS frameworks have you used locally, or in production? !!! How would you change/improve them?
     * _Foundation Zurb with SASS._
 * Have you played around with the new CSS Flexbox or Grid specs?
     * _No, I just read about it. I know they are useful for responsive design._
 * How is responsive design different from adaptive design?
     * _Responsive is when elements are moved and changed according to the screen in real time, and adaptive design is when they change on specific sizes (they snap)._
-* Have you ever worked with retina graphics? If so, when and what techniques did you use?
-* Is there any reason you'd want to use `translate()` instead of *absolute positioning*, or vice-versa? And why?
+* !!! Have you ever worked with retina graphics? If so, when and what techniques did you use?
+* !!! Is there any reason you'd want to use `translate()` instead of *absolute positioning*, or vice-versa? And why?
 
 ##### My CSS Questions
-* Types of positions and how they affect the flow of the page
+* !!! Types of positions and how they affect the flow of the page
 
 #### JS Questions:
 
@@ -352,8 +354,8 @@ This file contains a number of front-end interview questions that can be used wh
     * _Event capturing_
     * ![alt text](http://www.senocular.com/flash/tutorials/buttoncapturing/images/capture.png "Event capturing")
     * _In all browsers, except IE<9, there are two stages of event processing. The event first goes down - that’s called capturing, and then bubbles up. This behavior is standartized in W3C specification. You can use capturing if you do this `element.addEventListener(type, handler, phase)` where `phase` can be true or false, where true means that the handler is set to capturing mode._
-* What's the difference between an "attribute" and a "property"?
-* Why is extending built-in JavaScript objects not a good idea?
+* !!! What's the difference between an "attribute" and a "property"?
+* !!! Why is extending built-in JavaScript objects not a good idea?
 * Difference between document load event and document DOMContentLoaded event?
     * _The DOMContentLoaded event is fired when the document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading (the load event can be used to detect a fully-loaded page)._
 * What is the difference between `==` and `===`?
@@ -397,12 +399,22 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     * _It disables features that are confusing or poorly thought out._
     * _More about Strict Mode [here](http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/)._
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
+    * ```javascript
+        for(var i = 1; i < 100; i++) {
+            if (i%3 == 0 && i%5 == 0) {
+                console.log('fizzbuzz');
+            } else if (i%3 == 0) {
+                console.log('fizz');
+            } else if (i%5 == 0){
+                console.log('buzz');
+            }
+        }
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
     * _It’s harder to read the code and reason about it when variables seem to appear out of thin air (but really from the global scope)._
     * _Anyone can update a global variable from any point in the program at any time (and from any thread if there’s more than one going)._
     * _General code smell - if you're too lazy to put the variable only where it needs to be then what other corners are you cutting?_
     * _It’s probable that you'll encounter global variable name clashes. Since there’s only one namespace you're more likely to double up on a variable name._
-* Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
+* !!! Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
 * Explain what a single page app is and how to make one SEO-friendly.
     * _I consider a SPA a web application that is built on JS MVC frameworks. I don't consider a SPA a infinity scrolling page (pinterest) or a single page theme on wordpress._
     * _A problem might be with the router of your web app. If it's not configured to use true urls (using the new HTML5 History API), the robots parsing your site will have trouble interpreting pages with `url/#/my/page`, because they will consider it to be the same page as before the `#`._
@@ -451,7 +463,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     
         o.a = 3;
         //nothing happens, o remains the same (this will fail silently or by throwing a TypeError (most commonly, but not exclusively, when in strict mode)
-    * But the freeze only works one level. 
+    * _But the freeze only works one level._ 
   * What are the pros and cons of immutability?
     * _Pros:_
         * _Immutability and virtual DOM make the React apps to be blazing fast._
@@ -468,13 +480,13 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 * Explain the difference between synchronous and asynchronous functions.
     * _Synchronous way: It waits for each operation to complete, after that only it executes the next operation._
     * _Asynchronous way: It never waits for each operation to complete. The result of each operation will be handled once the result is available._
-* What is event loop?
-  * What is the difference between call stack and task queue?
-* Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
+* !!! What is event loop?
+  * !!! What is the difference between call stack and task queue?
+* !!! Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
 
 ##### My JS Questions:
 * What is the difference between `target` and `currentTarget` in an event?
-    * `target` is the clicked element and `currentTarget` is the element on which the handler is bound.
+    * _`target` is the clicked element and `currentTarget` is the element on which the handler is bound._
 * Why would you use an IIFE?
     * _You can easily create a scope._
 * What is `eval`?
@@ -491,13 +503,13 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 * What are the pitfalls of using `eval`?
     * _If you run `eval()` with a string that could be affected by a malicious party, you may end up running malicious code._
     * _It's also slower because it needs to invoke the JS interpreter. (it needs compilation)_
-* What is `__proto__` vs `prototype`?
+* !!! What is `__proto__` vs `prototype`?
 * What does the `new` keyword do?
     * _When the code new Foo(...) is executed, the following things happen:_
        * _A new object is created, inheriting from Foo.prototype._
        * _The constructor function Foo is called with the specified arguments, and with this bound to the newly created object. new Foo is equivalent to new Foo(), i.e. if no argument list is specified, Foo is called without arguments._
        * _The object returned by the constructor function becomes the result of the whole new expression. If the constructor function doesn't explicitly return an object, the object created in step 1 is used instead. (Normally constructors don't return a value, but they can choose to do so if they want to override the normal object creation process.)_
-* Difference between typeof and instanceOf.
+* !!! Difference between typeof and instanceOf.
 * How do you create a new class using es5? How do you extend using es5?
     ```javascript
     //creation of a class a.k.a. a function
@@ -544,9 +556,9 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     * _Detailed explanation [here](http://eli.thegreenplace.net/2013/10/22/classical-inheritance-in-javascript-es5)_
 * Is string an object in JS?
     * _"Everything is an object"... that's one of the big misconceptions that exist all around the language. Not everything is an object, there are what we call primitive values, which are string, number, boolean, null, and undefined. That's true, a string is a primitive value, but you can access all the methods inherited from String.prototype as if it were an object. The property accessor operators (the dot and the bracket notation), temporarily convert the string value to a String object (__coercion__), for being able to access those methods._
-* What do you know about functional programming? What are the ups and downs?
-* Give examples of some functional programming concepts.
-* What JS design patterns do you know?
+* !!! What do you know about functional programming? What are the ups and downs?
+* !!! Give examples of some functional programming concepts.
+* !!! What JS design patterns do you know?
     * _Singleton: _
     * _Factory: _
 
@@ -568,23 +580,23 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 
 #### Performance Questions:
 
-* What tools would you use to find a performance bug in your code?
-* What are some ways you may improve your website's scrolling performance?
-* Explain the difference between layout, painting and compositing.
+* !!! What tools would you use to find a performance bug in your code?
+* !!! What are some ways you may improve your website's scrolling performance?
+* !!! Explain the difference between layout, painting and compositing.
 
 #### Network Questions:
 
-* Traditionally, why has it been better to serve site assets from multiple domains?
-* Do your best to describe the process from the time you type in a website's URL to it finishing loading on your screen.
-* What are the differences between Long-Polling, Websockets and Server-Sent Events?
-* Explain the following request and response headers:
+* !!! Traditionally, why has it been better to serve site assets from multiple domains?
+* !!! Do your best to describe the process from the time you type in a website's URL to it finishing loading on your screen.
+* !!! What are the differences between Long-Polling, Websockets and Server-Sent Events?
+* !!! Explain the following request and response headers:
   * Diff. between Expires, Date, Age and If-Modified-...
   * Do Not Track
   * Cache-Control
   * Transfer-Encoding
   * ETag
   * X-Frame-Options
-* What are HTTP methods? List all HTTP methods that you know, and explain them.
+* !!! What are HTTP methods? List all HTTP methods that you know, and explain them.
 
 #### Coding Questions:
 
@@ -681,11 +693,12 @@ console.log('three');
 * What's a cool project that you've recently worked on?
 * What are some things you like about the developer tools you use?
     * _In PHP Storm I like the git, eslint, testing integrations_
-* Who inspires you in the front-end community?
+* What inspires you in the front-end community?
     * _The dynamic of this field can be exhausting and thrilling. The fact that as time goes by, JS reaches new and new frontiers (React Native/Node/Electron) ... makes me think, where will it end?_
+* !!! Who inspires you in the front-end community?
 * Do you have any pet projects? What kind?
     * _I have a project that I work on for a humanitarian non-profit. It's built with Laravel, Backbone and SCSS._
-* What's your favorite feature of Internet Explorer?
+* !!! What's your favorite feature of Internet Explorer?
 * How do you like your coffee?
     * _I don't drink coffee :)_
 

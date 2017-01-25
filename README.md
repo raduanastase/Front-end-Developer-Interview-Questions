@@ -654,8 +654,8 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 * !!! What do you know about functional programming? What are the ups and downs?
 * !!! Give examples of some functional programming concepts.
 * !!! What JS design patterns do you know?
-    * _Singleton: _
-    * _Factory: _
+    * _Singleton:_
+    * _Factory:_
 
 #### Testing Questions:
 
@@ -691,7 +691,15 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
   * Transfer-Encoding
   * ETag
   * X-Frame-Options
-* !!! What are HTTP methods? List all HTTP methods that you know, and explain them.
+* What are HTTP methods? List all HTTP methods that you know, and explain them.
+    * _GET - The GET method is used to retrieve information from the given server using a given URI. Requests using GET should only retrieve data and should have no other effect on the data._
+    * _HEAD - Same as GET, but transfers the status line and header section only._
+    * _POST - A POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms._
+    * _PUT - Replaces all current representations of the target resource with the uploaded content._
+    * _DELETE - Removes all current representations of the target resource given by a URI._
+    * _CONNECT - Establishes a tunnel to the server identified by a given URI._
+    * _OPTIONS - Describes the communication options for the target resource._
+    * _TRACE - Performs a message loop-back test along the path to the target resource._
 
 #### Coding Questions:
 

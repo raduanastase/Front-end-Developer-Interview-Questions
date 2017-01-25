@@ -565,7 +565,46 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
        * _A new object is created, inheriting from Foo.prototype._
        * _The constructor function Foo is called with the specified arguments, and with this bound to the newly created object. new Foo is equivalent to new Foo(), i.e. if no argument list is specified, Foo is called without arguments._
        * _The object returned by the constructor function becomes the result of the whole new expression. If the constructor function doesn't explicitly return an object, the object created in step 1 is used instead. (Normally constructors don't return a value, but they can choose to do so if they want to override the normal object creation process.)_
-* !!! Difference between typeof and instanceOf.
+* Difference between typeof and instanceOf.
+    * _Use instanceof for custom types:_
+    * ```javascript
+    
+        var ClassFirst = function () {};
+        var ClassSecond = function () {};
+        var instance = new ClassFirst();
+        typeof instance; // object
+        typeof instance == 'ClassFirst'; //false
+        instance instanceof Object; //true
+        instance instanceof ClassFirst; //true
+        instance instanceof ClassSecond; //false 
+    * _Use typeof for simple built in types:_
+    * ```javascript
+        'example string' instanceof String; // false
+        typeof 'example string' == 'string'; //true
+        
+        'example string' instanceof Object; //false
+        typeof 'example string' == 'object'; //false
+        
+        true instanceof Boolean; // false
+        typeof true == 'boolean'; //true
+        
+        99.99 instanceof Number; // false
+        typeof 99.99 == 'number'; //true
+        
+        function() {} instanceof Function; //true
+        typeof function() {} == 'function'; //true
+    * _Use instanceof for complex built in types:_
+    * ```javascript
+        /regularexpression/ instanceof RegExp; // true
+        typeof /regularexpression/; //object
+        
+        [] instanceof Array; // true
+        typeof []; //object
+        
+        {} instanceof Object; // true
+        typeof {}; //object
+        
+        typeof null; //object
 * How do you create a new class using es5? How do you extend using es5?
     ```javascript
     //creation of a class a.k.a. a function

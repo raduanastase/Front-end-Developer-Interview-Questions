@@ -193,9 +193,9 @@ This file contains a number of front-end interview questions that can be used wh
     * _Inline can't have width and height set, but inline-block can._
 * What's the difference between a relative, fixed, absolute and statically positioned element?
     * _Static is the default value. The left, top etc. values don't work._
-    * _The fixed element is positioned fixed regarding to the viewport. Even when the user scrolls the page, the element remain in the same spot._
+    * _The fixed element is positioned fixed regarding to the viewport. Even when the user scrolls the page, the element remains in the same spot._
     * _Relative is used if you like the static position but you want it changed a little._
-    * _Absolute is used to position an element to a specified position according to the closest parent that has the position set to fixed or absolute, or the original container._
+    * _Absolute is used to position an element to a specified position according to the closest parent that has the position set to fixed/absolute/relative, or the original container._
 * The 'C' in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?
     * _The CSS priority (or specificity) from down to up:_
         * _type selector: `div, h1`, pseudo-elements: `:before`_
@@ -220,7 +220,7 @@ This file contains a number of front-end interview questions that can be used wh
 * Explain event delegation
     * _Event delegation is based on event bubbling. Let's say that you have a div with a span inside. You add an event listener on the div and you click the span. The click event happens on the span and then notifies his parent and bubbles up the event. That is event bubbling. In combination with the `target` property of the event, you can use event delegation._
     * _Event delegation is useful because you can have only one event listener and you can find out if a specific element inside your page was clicked. This is also useful if you add elements dynamically and you can have only one event listener on the parent._
-* Explain how `this` works in JavaScript !!!__complete this answer__!!!
+* Explain how `this` works in JavaScript !!!**complete this answer**!!!
     * _`this` is changed based on how a function is called._
     * _The this object is bound at runtime based on the context in which a function is executed:_
       * _when used inside global functions,this is equal to window in nostrict mode and undefined in strict mode._
@@ -229,7 +229,7 @@ This file contains a number of front-end interview questions that can be used wh
       * _call and apply_
       * _bound functions_
       * _as dom event handler_
-* Explain how prototypal inheritance works !!!__complete this answer__!!!
+* Explain how prototypal inheritance works !!!**complete this answer**!!!
     * _When an object rabbit inherits from another object animal, in JavaScript that means that there is a special property rabbit.`__proto__ = animal`._
 
         ![alt](http://javascript.info/files/tutorial/intro/object/prototype.png)
@@ -259,7 +259,7 @@ This file contains a number of front-end interview questions that can be used wh
     * _CommonJS is a project to define a common API and ecosystem for JavaScript. One part of CommonJS is the Module specification. Node.js and RingoJS are server-side JavaScript runtimes, and yes, both of them implement modules based on the CommonJS Module spec._
     * _AMD (Asynchronous Module Definition) is another specification for modules. RequireJS is probably the most popular implementation of AMD. One major difference from CommonJS is that AMD specifies that modules are loaded asynchronously - that means modules are loaded in parallel, as opposed to blocking the execution by waiting for a load to finish._
     * _AMD is generally more used in client-side (in-browser) JavaScript development due to this, and CommonJS Modules are generally used server-side. However, you can use either module spec in either environment - for example, RequireJS offers directions for running in Node.js and browserify is a CommonJS Module implementation that can run in the browser._
-    * _My opinion ... !!!__complete this answer__!!!_ (also give code examples)
+    * _My opinion ... !!!**complete this answer**!!!_ (also give code examples)
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
     * _If you don't wrap the function with parentheses, the JS parser will treat it as a function declaration, not a function expression. A function expression can be called immediately, but a function declaration cannot._
@@ -442,17 +442,18 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     * _It prevents, or throws errors, when relatively "unsafe" actions are taken (such as gaining access to the global object)._
     * _It disables features that are confusing or poorly thought out._
     * _More about Strict Mode [here](http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/)._
-* Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
+* Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`.
     * ```javascript
-        for(var i = 1; i < 100; i++) {
+        for (var i = 1; i < 100; i++) {
             if (i%3 == 0 && i%5 == 0) {
                 console.log('fizzbuzz');
             } else if (i%3 == 0) {
                 console.log('fizz');
-            } else if (i%5 == 0){
+            } else if (i%5 == 0) {
                 console.log('buzz');
             }
         }
+    
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
     * _It’s harder to read the code and reason about it when variables seem to appear out of thin air (but really from the global scope)._
     * _Anyone can update a global variable from any point in the program at any time (and from any thread if there’s more than one going)._
@@ -463,7 +464,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     * _I consider a SPA a web application that is built on JS MVC frameworks. I don't consider a SPA a infinity scrolling page (pinterest) or a single page theme on wordpress._
     * _A problem might be with the router of your web app. If it's not configured to use true urls (using the new HTML5 History API), the robots parsing your site will have trouble interpreting pages with `url/#/my/page`, because they will consider it to be the same page as before the `#`._
 * What is the extent of your experience with Promises and/or their polyfills?
-    * _I didn't use promises much as described in ES2015 __(then, catch)__, but I bumped into the concept while using `$.ajax` __(done, fail, always)__._
+    * _I didn't use promises much as described in ES2015 **(then, catch)**, but I bumped into the concept while using `$.ajax` **(done, fail, always)**._
     * ```javascript
         var promise = new Promise((resolve, reject) => {
             if(true) {
@@ -516,7 +517,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
         * _This also makes debugging easier because you can see the state of your application in any point in time._
     * _Cons:_
         * _It needs more attention when working with it, because mutability comes to us more naturally_
-        * _Allocating lots and lots of small objects rather than modifying ones you already have can have a performance impact. Usually the complexity of either the allocator or the garbage collector depends on the number of objects on the heap. __This would be a valid point if we were to add immutability all over the place__._
+        * _Allocating lots and lots of small objects rather than modifying ones you already have can have a performance impact. Usually the complexity of either the allocator or the garbage collector depends on the number of objects on the heap. **This would be a valid point if we were to add immutability all over the place**._
         * _It’s not recommended on small data sets._
   * How can you achieve immutability in your own code?
     * _You can use Immutable.js. If you don't want to use this, you can also use (for Objects) `Object.assign({}, obj)` or (if not in ES2015) `_.extend({}, obj)` or `$.extend({}, obj)`
@@ -599,7 +600,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     ```
     * _Detailed explanation [here](http://eli.thegreenplace.net/2013/10/22/classical-inheritance-in-javascript-es5)_
 * Is string an object in JS?
-    * _"Everything is an object"... that's one of the big misconceptions that exist all around the language. Not everything is an object, there are what we call primitive values, which are string, number, boolean, null, and undefined. That's true, a string is a primitive value, but you can access all the methods inherited from String.prototype as if it were an object. The property accessor operators (the dot and the bracket notation), temporarily convert the string value to a String object (__coercion__), for being able to access those methods._
+    * _"Everything is an object"... that's one of the big misconceptions that exist all around the language. Not everything is an object, there are what we call primitive values, which are string, number, boolean, null, and undefined. That's true, a string is a primitive value, but you can access all the methods inherited from String.prototype as if it were an object. The property accessor operators (the dot and the bracket notation), temporarily convert the string value to a String object (**coercion**), for being able to access those methods._
 * !!! What do you know about functional programming? What are the ups and downs?
 * !!! Give examples of some functional programming concepts.
 * !!! What JS design patterns do you know?

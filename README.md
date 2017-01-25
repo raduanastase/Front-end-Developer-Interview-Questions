@@ -527,7 +527,18 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     * _Asynchronous way: It never waits for each operation to complete. The result of each operation will be handled once the result is available._
 * !!! What is event loop?
   * !!! What is the difference between call stack and task queue?
-* !!! Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
+* Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
+    * _In reality, nothing is actually wrong with using either style, and they both work. However, there is one very basic situation where the shorthand style won't yield the result you're looking for, and the reason is fairly obvious and simple. Only the first one is an actual function declaration, whereas the shorthand method is just a regular variable declaration with an anonymous function assigned to it as its value. Here is the most basic scenario:_
+    * ```javascript
+      var foo = 'bar';
+      
+      alert(foo); // alerts 'bar'
+      
+      alert(baz); // alerts 'undefined'
+      
+      var baz = 'thunk';
+    
+    * _More info [here](http://www.dustindiaz.com/javascript-function-declaration-ambiguity/)_
 
 ##### My JS Questions:
 * What is the difference between `target` and `currentTarget` in an event?
